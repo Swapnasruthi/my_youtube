@@ -7,7 +7,8 @@ const chatSlice = createSlice({
     },
     reducers:{
         addMessage:(state,action)=>{
-            state.messages.push(action.payload);
+            state.messages.splice(25,1); //deletes a message for every 25 message loaded in the store.
+            state.messages.unshift(action.payload);
         }
     }
 });
