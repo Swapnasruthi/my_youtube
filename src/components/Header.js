@@ -2,12 +2,14 @@ import { useDispatch } from "react-redux";
 import { toggleMenu } from "../utils/ToggleSlice";
 import { useEffect, useState } from "react";
 import { YOUTUBE_SEARCH_API } from "../utils/constants";
+import { Link } from "react-router-dom";
 
 const Header = ()=> {
     const [search, setSearch] = useState("");
     const [suggestion, setSuggestions] = useState([]);
     const [showSuggestions, setShowSuggestions] = useState(false);
     const dispatch = useDispatch();
+
     const handleMenuToggle = () => {
         dispatch(toggleMenu());
     }
@@ -23,6 +25,7 @@ const Header = ()=> {
         
     },[search]);
 
+  
     const fetchingSearchSuggestions = async()=>{
         const res = await fetch(YOUTUBE_SEARCH_API+search);
         const data = await res.json();
@@ -40,7 +43,12 @@ const Header = ()=> {
                 <img alt="yt logo" 
                     className="w-24 h-12"
                     src="https://cdn.worldvectorlogo.com/logos/youtube-6.svg"
+                  
+
                 />
+              
+                
+              
             </div>
 
             <div >
