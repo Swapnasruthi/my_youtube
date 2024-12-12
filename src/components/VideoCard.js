@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 
 const VideoCard = ({info}) => {
+    
     const {snippet,statistics} = info;
     return info && (
         <div className="m-2 mb-5">

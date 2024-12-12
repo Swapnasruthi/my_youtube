@@ -5,7 +5,7 @@ const Sidebar = ()=>{
     const selector = useSelector((store) => store.toggle.isMenuOpen);
 
     return selector && (
-        <div className="fixed w-2/12 shadow-lg h-full overflow-y-auto mt-16 bg-white">
+        <div className="fixed w-2/12 shadow-lg h-full overflow-y-auto mt-16 bg-white z-20">
            
             <div className="m-2 divide-x cursor-pointer">
                 <ul>
