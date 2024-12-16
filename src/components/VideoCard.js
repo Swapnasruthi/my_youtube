@@ -9,7 +9,10 @@ const VideoCard = ({info}) => {
             <Link to={"/watch?v="+info.id}><img className="rounded-2xl" alt="Thumbnail" src={snippet.thumbnails.high.url}/>
             <p className="font-semibold w-[24rem] text-base line-clamp-2">{snippet.title}</p>
             <p className="text-gray-600">{snippet.channelTitle}</p>
-            <p className="text-gray-600">{statistics.viewCount}</p></Link>
+            {statistics? (
+                <p className="text-gray-600">{statistics.viewCount}</p>
+                ) : null}
+            </Link>
             </div>
             
         </div>
