@@ -1,21 +1,42 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { closeMenu } from "../utils/ToggleSlice";
 import { useSearchParams } from "react-router-dom";
 import CommentsContainer from "./CommentsContainer";
 import Livechat from "./Livechat";
+import { addChannel } from "../utils/channelSlice";
+import { API_KEY } from "../utils/constants";
 
 const WatchLater = ()=>{
     const dispatch = useDispatch();
     const [searchParams] = useSearchParams();
     const videoId = searchParams.get("v");
-    const singleVideo = useSelector((store) => store?.videos?.videoList[1].find((video) => video.id === videoId));
+    const [channelData, setChannelData] = useState([]);
+    const channelID = useSelector((store)=> store.channel.channelId);
+   
+    const vid = useSelector((store) => store.videos.videoList);
+    console.log(vid[0]);
 
+    // const singleVideo = useSelector((store) => (store?.videos?.videoList[0]) ? (store?.videos?.videoList[0]).find((video) => video.id.videoId === videoId) : (store?.videos?.videoList[1]).find((video) => ( ( video?.id) === videoId)));
+
+    const singleVideo = useSelector((store) =>(store?.videos?.videoList[0]).find((video) => ( ( video?.id?.videoId) ? (video?.id?.videoId === videoId ): ( video?.id) === videoId)));
+    
+    dispatch(addChannel(singleVideo?.snippet?.channelId));
+    
     console.log(singleVideo);
+
+    const channelInfo = async() => {
+            const channelData = await fetch("https://www.googleapis.com/youtube/v3/channels?part=snippet,statistics&id="+channelID+"&key="+API_KEY);
+            const channelJson = await channelData.json();
+            setChannelData(channelJson?.items[0]);
+    }
+
 
     useEffect(()=>{
         dispatch(closeMenu());
+        channelInfo()
     },[]);
+
     return(
         <div className="w-full">
         <div className="flex w-full relative">
@@ -38,11 +59,11 @@ const WatchLater = ()=>{
                     <div>
                         <img alt="user profile"
                         className="w-11 h-11 mr-2 rounded-full"
-                        src={singleVideo?.snippet?.thumbnails?.default?.url}/>
+                        src={channelData?.snippet?.thumbnails?.default?.url}/>
                     </div>
                     <div className="flex flex-col">
                         <p className="font-semibold text-lg">{singleVideo?.snippet?.channelTitle}</p>
-                        <p className="text-sm text-gray-700 ">230k subscribers</p>
+                        <p className="text-sm text-gray-700 ">{channelData?.statistics?.subscriberCount}</p>
                     </div>
                     <div className="ml-5">
                         <button className="bg-black text-white p-2 rounded-3xl font-bold">subscribe</button>

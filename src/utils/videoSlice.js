@@ -8,9 +8,12 @@ const videoSlice = createSlice({
     reducers:{
         addVideos:(state,action)=>{
             state.videoList.push(action.payload);
+        },
+        removeVideos:(state,action)=>{
+            state.videoList = [];
         }
     }
 });
 
-export const {addVideos} = videoSlice.actions;
+export const {addVideos, removeVideos} = videoSlice.actions;
 export default videoSlice.reducer;
