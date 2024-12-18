@@ -1,9 +1,9 @@
 import Buttons from "./Buttons";
 
 const ButtonList = ()=>{
-    const button_list = ["All","Music","Mixes","Podcasts","Movies","Web series","startup company","Game shows","Live","Visual Effects","valentines","pushpa 2"];
+    const button_list = ["All","Music","podcast","news"];
     return(
-        <div className="m-2 flex justify-center">
+        <div className="flex ml-36 m-2">
             {button_list.map((name) => <Buttons names={name}/>)}
             
         </div>

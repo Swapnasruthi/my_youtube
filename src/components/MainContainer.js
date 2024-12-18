@@ -6,9 +6,15 @@ const MainContainer = ()=>{
     const selector = useSelector((store)=> store.toggle.isMenuOpen);
 
     return(
-        <div className={selector? "mt-20 ml-[15rem] relative z-0" : "mt-20"}>
+        <div >
+            <div className={selector? "mt-20 ml-[7rem] relative z-0" : "mt-20"}>
             <ButtonList/>
+            </div>
+            
+            <div className={selector? " ml-[15rem] relative z-0" : ""}>
             <VideoContainer/>
+            </div>
+            
         </div>
     )
 }

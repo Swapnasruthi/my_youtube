@@ -8,9 +8,12 @@ const searchSlice = createSlice({
     reducers:{
         addSearchText:(state,action)=>{
             state.searchText = action.payload;
+        },
+        removeSearchText:(state,action)=>{
+            state.searchText = "";
         }
     }
 });
 
-export const {addSearchText} = searchSlice.actions;
+export const {addSearchText,removeSearchText} = searchSlice.actions;
 export default searchSlice.reducer;
