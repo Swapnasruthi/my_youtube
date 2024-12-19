@@ -28,7 +28,7 @@ const VideoContainer = ()=> {
     }
 
     const searchedVideos = async() => {
-        const data = await fetch("https://www.googleapis.com/youtube/v3/search?part=snippet&q="+searchInfo+"&type=video&maxResults=50&key="+API_KEY);
+        const data = await fetch("https://www.googleapis.com/youtube/v3/search?part=snippet&q="+searchInfo+"&type=video&maxResults=30&key="+API_KEY);
         const json = await data.json();
         setVideoInfo(json?.items);
         dispatch(toggleSearchPage());

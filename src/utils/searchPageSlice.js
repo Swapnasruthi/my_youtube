@@ -7,7 +7,7 @@ const searchPageSlice = createSlice({
     },
     reducers:{
         toggleSearchPage:(state,action)=>{
-            state.isSearchPage = state.isSearchPage ? false:true;
+            state.isSearchPage = state.isSearchPage===true ? false:true;
         }
     }
 });
