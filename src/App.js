@@ -11,6 +11,7 @@ function App() {
     path:"/",
     element:<Body/>,
     children:[
+    
       {
         path:"/",
         element:<MainContainer/>
@@ -18,7 +19,7 @@ function App() {
       },
       {
         path:"/watch",
-        element:<WatchLater/>
+        element:<WatchLater/> 
         
       }
     ]
@@ -26,8 +27,7 @@ function App() {
   return (
     <Provider store={Store}>
     <div className="">
-        <Header/>
-       
+        
         <RouterProvider router={appRouter}/>
     </div>
     </Provider>

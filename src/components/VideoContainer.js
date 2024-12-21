@@ -8,16 +8,24 @@ import { closeMenu } from "../utils/ToggleSlice";
 import { addSearchText } from "../utils/searchSlice";
 import { toggleSearchPage } from "../utils/searchPageSlice";
 const VideoContainer = ()=> {
+    
     const dispatch = useDispatch();
     const [videoInfo, setVideoInfo] = useState([]);
     const searchInfo = useSelector((store) => store.search.searchText).replace(/\s+/g, "");
   
     const searchPage = useSelector((store)=> store.searchPage.isSearchPage);
+
     const fetchVideos = async() => {
+        if(videoInfo == null){
+            window.location.reload();
+        }
         const data = await fetch(youtube_API);
         const json = await data.json();
 
-        dispatch(toggleSearchPage());
+        if(searchPage){
+                dispatch(toggleSearchPage());
+
+                }
         
         setVideoInfo(json?.items);
         dispatch(removeVideos());
@@ -31,7 +39,10 @@ const VideoContainer = ()=> {
         const data = await fetch("https://www.googleapis.com/youtube/v3/search?part=snippet&q="+searchInfo+"&type=video&maxResults=30&key="+API_KEY);
         const json = await data.json();
         setVideoInfo(json?.items);
-        dispatch(toggleSearchPage());
+        if(!searchPage){
+            dispatch(toggleSearchPage());
+
+        }
         console.log(searchPage);
 
         dispatch(closeMenu());
@@ -48,7 +59,6 @@ const VideoContainer = ()=> {
     useEffect(()=>{
     
         (searchInfo.length>0)? searchedVideos() : fetchVideos();
-
     },[searchInfo]);
    
     

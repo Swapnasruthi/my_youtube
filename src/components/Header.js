@@ -11,7 +11,7 @@ const Header = ()=> {
     const [showSuggestions, setShowSuggestions] = useState(false);
 
     const dispatch = useDispatch();
-
+    const navigate = useNavigate();
     const handleMenuToggle = () => {
         dispatch(toggleMenu());
     }
@@ -55,9 +55,10 @@ const Header = ()=> {
       };
 
     const logoClick = ()=>{
-
+        
         dispatch(addSearchText(""));
         setSearch("");
+        navigate("/");
         
     }
     return(

@@ -23,6 +23,11 @@ var nameList = [
   ];
 
 
+  var numberList=[55.6,32.6,89.5,100,56,29.6,96.6,987.6,23,58,90,13,89.5, 90.8, 81.7, 913, 13.7, 75.8, 49, 59];
+
+  export function generateRandomNumber() {
+    return numberList[Math.floor(Math.random() * numberList.length)];
+};
   export function generateRandomName() {
             return nameList[Math.floor(Math.random() * nameList.length)];
       };
@@ -40,3 +45,28 @@ var nameList = [
         return result;
     }
     
+
+    export   const countToDisplaycount=(viewCount)=>
+      {
+        if(viewCount>=1000 && viewCount<=999999)
+        {
+            let value= viewCount/1000;
+            let out=value.toFixed(1);
+            return out+"k";
+        }
+        else if(viewCount>=1000000 && viewCount<=999999999 )
+        {
+            let value= viewCount/1000000;
+            let out=value.toFixed(1);
+            return out+"M";  
+        }
+        else if(viewCount>=1000000000)
+        {
+            let value= viewCount/1000000000;
+            let out=value.toFixed(1);
+            return out+"M";  
+        }
+        else{
+            return viewCount
+        }
+      }

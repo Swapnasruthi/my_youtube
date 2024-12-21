@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { addChannel } from "../utils/channelSlice";
 import { useEffect, useState } from "react";
 import { API_KEY } from "../utils/constants";
+import { countToDisplaycount } from "../utils/helper";
 
 const VideoCard = ({info}) => {
     
@@ -39,7 +40,7 @@ const VideoCard = ({info}) => {
                 <p className={searchPage? "font-semibold w-[30rem] text-base line-clamp-2 mt-5 mb-1" : "font-semibold w-[24rem] text-base line-clamp-2"}>{snippet.title}</p>
             </div>
             <div>
-                {searchPage && <p className="mx-1 mb-2 text-gray-600">{channelData?.statistics?.viewCount}</p>}
+                {searchPage && <p className="mx-1 mb-2 text-gray-600">{countToDisplaycount(channelData?.statistics?.viewCount)}</p>}
             </div>
             <div className={searchPage ? "flex" : "flex ml-8"}>
             
@@ -52,7 +53,7 @@ const VideoCard = ({info}) => {
                 {searchPage && <p className="font-semibold w-[30rem] text-base line-clamp-2 my-5 text-gray-500">{channelData?.snippet?.description}</p>}
             </div>
             {statistics? (
-                <p className="text-gray-600 ml-8">{statistics.viewCount}</p>
+                <p className="text-gray-600 ml-8">{countToDisplaycount(statistics.viewCount)}</p>
                 ) : null}
             </div>
             
