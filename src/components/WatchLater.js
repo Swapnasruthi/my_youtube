@@ -18,29 +18,25 @@ const WatchLater = ()=>{
         const [channelData, setChannelData] = useState([]);
         const channelID = useSelector((store)=> store.channel.channelId);
 
-        const [refresh, setRefresh] = useState(false);
-        const location = useLocation();
+     
         const navigate = useNavigate();
         const vid = useSelector((store) => store.videos.videoList);
-        //console.log(vid[0]);
-    
+        console.log(vid[0]===undefined);
+        
         // const singleVideo = useSelector((store) => (store?.videos?.videoList[0]) ? (store?.videos?.videoList[0]).find((video) => video.id.videoId === videoId) : (store?.videos?.videoList[1]).find((video) => ( ( video?.id) === videoId)));
     
         const singleVideo = useSelector((store) =>(store?.videos?.videoList[0]).find((video) => ( ( video?.id?.videoId) ? (video?.id?.videoId === videoId ): ( video?.id) === videoId)));
-        if(singleVideo === null){
-            navigate("/");
-            window.location.reload();
-
-        }
-        
-        console.log(singleVideo);
+       
+         if(singleVideo === undefined){
+                navigate("/");
+                window.location.reload();
+    
+            }
+        //console.log(singleVideo);
 
         dispatch(addChannel(singleVideo?.snippet?.channelId));
         
-        // if(singleVideo?.snippet?.categoryId){
-        //     const {categoryId} = singleVideo?.snippet;
-    
-        // }
+        
     
     
         const channelInfo = async() => {
@@ -51,9 +47,12 @@ const WatchLater = ()=>{
     
     
         useEffect(()=>{
+            if(vid[0] === undefined || vid.length===0){
+                navigate("/");
+            }
+        
             dispatch(closeMenu());
             channelInfo();
-            
         },[]);
     
         return(

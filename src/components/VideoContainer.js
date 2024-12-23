@@ -14,7 +14,8 @@ const VideoContainer = ()=> {
     const searchInfo = useSelector((store) => store.search.searchText).replace(/\s+/g, "");
   
     const searchPage = useSelector((store)=> store.searchPage.isSearchPage);
-
+    const button = useSelector((store)=> store.button.buttonName);
+    console.log(button);
     const fetchVideos = async() => {
         if(videoInfo == null){
             window.location.reload();

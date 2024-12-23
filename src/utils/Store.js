@@ -5,6 +5,7 @@ import searchSlice from "./searchSlice";
 import videoSlice from "./videoSlice";
 import channelSlice from "./channelSlice";
 import searchPageSlice from "./searchPageSlice";
+import buttonSlice from "./buttonSlice";
 const Store = configureStore({
     reducer:{
         toggle: ToggleSlice,
@@ -13,6 +14,7 @@ const Store = configureStore({
         videos:videoSlice,
         channel:channelSlice,
         searchPage:searchPageSlice,
+        button:buttonSlice,
     }
 });
 
