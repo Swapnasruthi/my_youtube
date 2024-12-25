@@ -6,4 +6,6 @@ export const YOUTUBE_SEARCH_API = "http://suggestqueries.google.com/complete/sea
 
 export const SEARCH_API = "https://www.googleapis.com/youtube/v3/search?part=snippet&q=music&type=video&maxResults=50&key="+API_KEY;
 
+export const CONNECTION_STRING = "mongodb+srv://swapnamajji2005:F1L8pUGPcYaQILcu@myyoutube.uy38i.mongodb.net/?retryWrites=true&w=majority&appName=myYoutube/youtube";
 
+export const SERVER_API = "http://localhost:5000";

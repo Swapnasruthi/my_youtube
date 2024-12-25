@@ -6,13 +6,17 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import MainContainer from "./components/MainContainer";
 import WatchLater from "./components/WatchLater";
 import ErrorBoundary from "./components/ErrorBoundary ";
+import LoginPage from "./components/LoginPage";
 
 function App() {
   const appRouter = createBrowserRouter([{
     path:"/",
     element:<Body/>,
     children:[
-    
+      {
+        path:"/login",
+        element:<LoginPage/>
+      },
       {
         path:"/",
         element:<MainContainer/>
